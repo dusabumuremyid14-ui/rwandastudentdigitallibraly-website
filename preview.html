@@ -1,0 +1,700 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rwanda Student Digital Library</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #263445;
+}
+
+/* HEADER */
+header {
+    background: #102d50;
+    color: white;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #42c5e8;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(120deg, #102d50, #176b91);
+    color: white;
+    text-align: center;
+    padding: 75px 20px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.search-box {
+    max-width: 550px;
+    margin: auto;
+    display: flex;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 6px 0 0 6px;
+    outline: none;
+}
+
+.search-box button {
+    padding: 15px 22px;
+    border: none;
+    background: #12a6d1;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 6px 6px 0;
+}
+
+/* GENERAL SECTIONS */
+.container {
+    width: 88%;
+    margin: 40px auto;
+}
+
+.section-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #102d50;
+}
+
+/* STATISTICS */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000010;
+}
+
+.stat-card h2 {
+    color: #087ca8;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+/* FILTERS */
+.filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.filters select {
+    padding: 12px;
+    border: 1px solid #ccd5df;
+    border-radius: 6px;
+    background: white;
+}
+
+/* RESOURCE CARDS */
+.resources {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000010;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.book-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #102d50;
+}
+
+.card p {
+    color: #687789;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 15px;
+    margin-top: 12px;
+    background: #087ca8;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #102d50;
+}
+
+/* LOGIN AND ADMIN */
+.panel {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000010;
+    max-width: 550px;
+    margin: 30px auto;
+}
+
+.panel input, .panel select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccd5df;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* FOOTER */
+footer {
+    background: #102d50;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+}
+
+footer p {
+    margin: 8px;
+    color: #d2e1ed;
+}
+
+/* MOBILE */
+@media(max-width: 600px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav a {
+        margin: 7px;
+        display: inline-block;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .search-box {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .search-box input,
+    .search-box button {
+        border-radius: 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">📚 Rwanda Student Library</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#books">Books</a>
+        <a href="#papers">Past Papers</a>
+        <a href="#login">Login</a>
+        <a href="#admin">Admin</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <h1>Welcome to Rwanda Student Digital Library</h1>
+
+    <p>
+        Access textbooks, learning materials and
+        Rwanda National Examination past papers.
+    </p>
+
+    <div class="search-box">
+        <input type="text" id="searchInput"
+        placeholder="Search books, subjects or past papers...">
+
+        <button onclick="searchResources()">Search</button>
+    </div>
+</section>
+
+<!-- STATISTICS -->
+<section class="container">
+    <div class="stats">
+
+        <div class="stat-card">
+            <h2>6</h2>
+            <p>Student Classes</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>2000-2026</h2>
+            <p>Examination Years</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>24/7</h2>
+            <p>Library Access</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>PDF</h2>
+            <p>Learning Resources</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- BOOKS -->
+<section class="container" id="books">
+
+    <h2 class="section-title">📖 Student Books</h2>
+
+    <div class="filters">
+
+        <select id="classFilter" onchange="searchResources()">
+            <option value="">All Classes</option>
+            <option value="S1">Senior 1</option>
+            <option value="S2">Senior 2</option>
+            <option value="S3">Senior 3</option>
+            <option value="S4">Senior 4</option>
+            <option value="S5">Senior 5</option>
+            <option value="S6">Senior 6</option>
+        </select>
+
+        <select id="typeFilter" onchange="searchResources()">
+            <option value="">All Resources</option>
+            <option value="Book">Books</option>
+            <option value="Past Paper">Past Papers</option>
+        </select>
+
+    </div>
+
+    <div class="resources" id="resourceList">
+
+        <!-- BOOK 1 -->
+        <div class="card resource"
+        data-class="S5" data-type="Book"
+        data-name="Mathematics">
+
+            <div class="book-icon">📘</div>
+            <h3>Mathematics</h3>
+            <p>Class: Senior 5</p>
+            <p>Category: Textbook</p>
+
+            <a href="resources/mathematics-s5.pdf"
+            class="btn" target="_blank">Read Book</a>
+
+        </div>
+
+        <!-- BOOK 2 -->
+        <div class="card resource"
+        data-class="S5" data-type="Book"
+        data-name="Physics">
+
+            <div class="book-icon">📗</div>
+            <h3>Physics</h3>
+            <p>Class: Senior 5</p>
+            <p>Category: Textbook</p>
+
+            <a href="resources/physics-s5.pdf"
+            class="btn" target="_blank">Read Book</a>
+
+        </div>
+
+        <!-- BOOK 3 -->
+        <div class="card resource"
+        data-class="S6" data-type="Book"
+        data-name="Chemistry">
+
+            <div class="book-icon">📙</div>
+            <h3>Chemistry</h3>
+            <p>Class: Senior 6</p>
+            <p>Category: Textbook</p>
+
+            <a href="resources/chemistry-s6.pdf"
+            class="btn" target="_blank">Read Book</a>
+
+        </div>
+
+        <!-- PAST PAPER 1 -->
+        <div class="card resource"
+        data-class="S6" data-type="Past Paper"
+        data-name="Mathematics 2025">
+
+            <div class="book-icon">📄</div>
+            <h3>Mathematics Past Paper</h3>
+            <p>Class: Senior 6</p>
+            <p>Year: 2025</p>
+
+            <a href="resources/mathematics-2025.pdf"
+            class="btn" target="_blank">Open Paper</a>
+
+        </div>
+
+        <!-- PAST PAPER 2 -->
+        <div class="card resource"
+        data-class="S6" data-type="Past Paper"
+        data-name="Physics 2024">
+
+            <div class="book-icon">📄</div>
+            <h3>Physics Past Paper</h3>
+            <p>Class: Senior 6</p>
+            <p>Year: 2024</p>
+
+            <a href="resources/physics-2024.pdf"
+            class="btn" target="_blank">Open Paper</a>
+
+        </div>
+
+        <!-- PAST PAPER 3 -->
+        <div class="card resource"
+        data-class="S6" data-type="Past Paper"
+        data-name="Biology 2023">
+
+            <div class="book-icon">📄</div>
+            <h3>Biology Past Paper</h3>
+            <p>Class: Senior 6</p>
+            <p>Year: 2023</p>
+
+            <a href="resources/biology-2023.pdf"
+            class="btn" target="_blank">Open Paper</a>
+
+        </div>
+
+    </div>
+
+    <p id="noResults" class="hidden">
+        No matching resources found.
+    </p>
+
+</section>
+
+<!-- LOGIN -->
+<section class="container" id="login">
+
+    <h2 class="section-title">🔐 Student Login</h2>
+
+    <div class="panel">
+
+        <form onsubmit="loginStudent(event)">
+
+            <input type="email" id="email"
+            placeholder="Enter your email" required>
+
+            <input type="password" id="password"
+            placeholder="Enter your password" required>
+
+            <button class="btn" type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <p id="loginMessage"></p>
+
+        <p>
+            New student?
+            <a href="#register">Create an account</a>
+        </p>
+
+    </div>
+
+</section>
+
+<!-- REGISTER -->
+<section class="container" id="register">
+
+    <h2 class="section-title">Create Student Account</h2>
+
+    <div class="panel">
+
+        <form onsubmit="registerStudent(event)">
+
+            <input type="text" id="studentName"
+            placeholder="Full name" required>
+
+            <input type="email" id="studentEmail"
+            placeholder="Email address" required>
+
+            <select id="studentClass" required>
+                <option value="">Choose your class</option>
+                <option>S1</option>
+                <option>S2</option>
+                <option>S3</option>
+                <option>S4</option>
+                <option>S5</option>
+                <option>S6</option>
+            </select>
+
+            <input type="password" id="studentPassword"
+            placeholder="Create password" required>
+
+            <button type="submit" class="btn">
+                Register
+            </button>
+
+        </form>
+
+        <p id="registerMessage"></p>
+
+    </div>
+
+</section>
+
+<!-- ADMIN -->
+<section class="container" id="admin">
+
+    <h2 class="section-title">⚙️ Admin Resource Upload</h2>
+
+    <div class="panel">
+
+        <p>
+            Add a book or past examination paper
+            to the library.
+        </p>
+
+        <form onsubmit="addResource(event)">
+
+            <input type="text" id="resourceName"
+            placeholder="Resource name" required>
+
+            <select id="resourceClass" required>
+                <option value="">Select class</option>
+                <option>S1</option>
+                <option>S2</option>
+                <option>S3</option>
+                <option>S4</option>
+                <option>S5</option>
+                <option>S6</option>
+            </select>
+
+            <select id="resourceType" required>
+                <option value="">Resource type</option>
+                <option>Book</option>
+                <option>Past Paper</option>
+            </select>
+
+            <input type="number" id="resourceYear"
+            placeholder="Examination year (if applicable)"
+            min="2000" max="2026">
+
+            <input type="file" id="resourceFile"
+            accept=".pdf" required>
+
+            <button class="btn" type="submit">
+                Add Resource
+            </button>
+
+        </form>
+
+        <p id="uploadMessage"></p>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <h2>Rwanda Student Digital Library</h2>
+
+    <p>Education is the key to a brighter future.</p>
+
+    <p>Books | Past Papers | Learning Materials</p>
+
+    <p>© 2026 Rwanda Student Digital Library</p>
+
+</footer>
+
+<script>
+
+// SEARCH RESOURCES
+function searchResources() {
+
+    const search = document.getElementById(
+        "searchInput").value.toLowerCase();
+
+    const classValue = document.getElementById(
+        "classFilter").value;
+
+    const typeValue = document.getElementById(
+        "typeFilter").value;
+
+    const cards = document.querySelectorAll(".resource");
+
+    let count = 0;
+
+    cards.forEach(card => {
+
+        const name = card.dataset.name.toLowerCase();
+        const className = card.dataset.class;
+        const type = card.dataset.type;
+
+        const matches =
+            name.includes(search) &&
+            (!classValue || className === classValue) &&
+            (!typeValue || type === typeValue);
+
+        card.style.display = matches ? "block" : "none";
+
+        if(matches) count++;
+
+    });
+
+    document.getElementById("noResults")
+        .style.display = count === 0 ? "block" : "none";
+}
+
+// DEMO LOGIN
+function loginStudent(event) {
+
+    event.preventDefault();
+
+    document.getElementById("loginMessage").innerText =
+        "Demo login only. Connect a secure authentication system for real accounts.";
+
+}
+
+// DEMO REGISTRATION
+function registerStudent(event) {
+
+    event.preventDefault();
+
+    document.getElementById("registerMessage").innerText =
+        "Registration demo completed. Connect a database to save student accounts.";
+
+}
+
+// DEMO RESOURCE UPLOAD
+function addResource(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById(
+        "resourceName").value;
+
+    const className = document.getElementById(
+        "resourceClass").value;
+
+    const type = document.getElementById(
+        "resourceType").value;
+
+    const year = document.getElementById(
+        "resourceYear").value;
+
+    const file = document.getElementById(
+        "resourceFile").files[0];
+
+    if(!file || file.type !== "application/pdf") {
+        alert("Please select a PDF file.");
+        return;
+    }
+
+    const url = URL.createObjectURL(file);
+
+    const card = document.createElement("div");
+
+    card.className = "card resource";
+
+    card.dataset.name = name.toLowerCase();
+    card.dataset.class = className;
+    card.dataset.type = type;
+
+    card.innerHTML = `
+        <div class="book-icon">📄</div>
+        <h3></h3>
+        <p>Class: ${className}</p>
+        <p>Type: ${type}</p>
+        <p>Year: ${year || "Not specified"}</p>
+        <a class="btn" target="_blank">Read PDF</a>
+        <a class="btn" download>Download</a>
+    `;
+
+    card.querySelector("h3").textContent = name;
+
+    const links = card.querySelectorAll("a");
+
+    links[0].href = url;
+    links[1].href = url;
+    links[1].download = file.name;
+
+    document.getElementById("resourceList")
+        .appendChild(card);
+
+    document.getElementById("uploadMessage").innerText =
+        "PDF added to this browser session successfully.";
+
+    event.target.reset();
+
+}
+
+</script>
+
+</body>
+</html>
